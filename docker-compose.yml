@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:13
+    container_name: go-htmx-starter-postgres
+    hostname: postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: 'redis:alpine'
+    container_name: go-htmx-starter-redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - 'redis_data:/data'
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      retries: 3
+      timeout: 5s
+
+  nats:
+    image: nats:2.9-alpine
+    container_name: go-htmx-starter-nats
+    hostname: nats
+    ports:
+      - "4222:4222"  # NATS client port
+      - "8222:8222"  # NATS management web UI port
+    environment:
+      - "NATS_MAX_PAYLOAD=1048576"  # Set max payload size to 1MB
+    healthcheck:
+      test: ["CMD-SHELL", "nats rtt -s nats://localhost:4222 > /dev/null 2>&1 || exit 1"]
+      interval: 10s
+      retries: 3
+
+volumes:
+  postgres_data:
+  redis_data:
