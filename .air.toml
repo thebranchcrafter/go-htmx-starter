@@ -1,0 +1,33 @@
+root = "cmd/web/app"
+tmp_dir = "tmp"
+
+[build]
+cmd = "go build -o tmp/main ./cmd/web/app"
+bin = "tmp/main"
+exclude_dir = ["tmp", "assets"]
+include_ext = ["go", "templ"]
+delay = 1000
+
+# Ensure Templ files are generated before restarting
+prebuild = "templ generate"
+
+[log]
+time = true
+
+[watcher]
+watch_dirs = [
+  "cmd",
+  "components",
+  "internal",
+  "pkg"
+]
+
+ignore_dirs = [
+  "tmp",
+  "assets"
+]
+
+ignore_ext = ["log"]
+
+[files]
+ext = ["go", "templ"]

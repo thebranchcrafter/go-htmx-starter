@@ -3,8 +3,8 @@ package user_ui
 import (
 	"github.com/a-h/templ"
 	"github.com/gin-gonic/gin"
+	components "github.com/thebranchcrafter/go-htmx-starter/components/dashboard"
 	user_domain "github.com/thebranchcrafter/go-htmx-starter/internal/app/module/user/domain"
-	"github.com/thebranchcrafter/go-htmx-starter/internal/app/module/user/ui/views"
 	"log"
 	"net/http"
 )
@@ -24,5 +24,5 @@ func HandleUserDashboard(g *gin.Context) {
 
 	g.Writer.Header().Set("Content-Type", "text/html")
 	log.Println(user.Name())
-	templ.Handler(views.DashboardLayout(user)).ServeHTTP(g.Writer, g.Request)
+	templ.Handler(components.DashboardLayout(user)).ServeHTTP(g.Writer, g.Request)
 }

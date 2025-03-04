@@ -1,0 +1,15 @@
+package components
+
+templ Header() {
+	<!-- Header -->
+	<header class="bg-white border-b border-gray-200 px-6 py-4">
+		<div class="flex items-center justify-between">
+			<h1 class="text-xl font-bold">Dashboard</h1>
+			<div class="flex items-center space-x-4">
+				@LanguageDropdown()
+				@NotificationsDropdown()
+				@ProfileDropdown()
+			</div>
+		</div>
+	</header>
+}

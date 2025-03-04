@@ -55,4 +55,4 @@ templ-install:     # Install templ if not already installed
 
 templ-run: templ-install # Run templ generate with watch and proxy
 	@echo -e "$(CYAN)Running templ generate with watch and proxy...$(RESET)"
-	templ generate --watch --proxy="http://localhost:8080" --cmd="go run cmd/web/app/main.go"
+	templ generate --watch --proxy="http://localhost:8081" --cmd="go run cmd/web/app/main.go"

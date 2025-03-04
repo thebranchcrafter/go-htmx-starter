@@ -1,0 +1,36 @@
+package landing
+
+templ LandingHead() {
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Landing Page</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<link rel="stylesheet" href="/assets/dist/tailwind.min.css"/>
+		<script type="application/javascript" src="/assets/dist/landing.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css"/>
+		<script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                      new Rellax('.rellax', {
+                        speed: -2, // Adjust the speed of the animation
+                        center: true, // Parallax aligns at the center
+                        round: true, // Rounds values for smoother animations
+                        vertical: true,
+                        horizontal: false
+                      });
+                    });
+                  </script>
+		<script src="https://unpkg.com/htmx.org@1.6.1"></script>
+	</head>
+}
+
+templ Index() {
+	@LandingLayout(LandingHead(), Landing())
+}
