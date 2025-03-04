@@ -1,0 +1,96 @@
+package components
+
+templ DashboardIndex() {
+    @DashboardLayout(Index())
+}
+
+templ Index() {
+                    <!-- Page Title -->
+                    <div class="mb-6">
+                        <h1 class="text-3xl font-bold text-primary">Dashboard</h1>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                        <div class="card bg-base-100 shadow hover:shadow-lg transition-shadow">
+                            <div class="card-body">
+                                <h2 class="card-title text-primary">Total Revenue</h2>
+                                <p class="text-2xl font-bold">$12,345</p>
+                                <p class="text-sm text-success">+12% from last month</p>
+                            </div>
+                        </div>
+                        <div class="card bg-base-100 shadow hover:shadow-lg transition-shadow">
+                            <div class="card-body">
+                                <h2 class="card-title text-primary">Users</h2>
+                                <p class="text-2xl font-bold">1,234</p>
+                                <p class="text-sm text-error">-5% from last month</p>
+                            </div>
+                        </div>
+                        <div class="card bg-base-100 shadow hover:shadow-lg transition-shadow">
+                            <div class="card-body">
+                                <h2 class="card-title text-primary">Orders</h2>
+                                <p class="text-2xl font-bold">567</p>
+                                <p class="text-sm text-success">+8% from last month</p>
+                            </div>
+                        </div>
+                        <div class="card bg-base-100 shadow hover:shadow-lg transition-shadow">
+                            <div class="card-body">
+                                <h2 class="card-title text-primary">Conversion Rate</h2>
+                                <p class="text-2xl font-bold">4.5%</p>
+                                <p class="text-sm text-warning">-2% from last month</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts and Tables -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Chart -->
+                        <div class="card bg-base-100 shadow hover:shadow-lg transition-shadow">
+                            <div class="card-body">
+                                <h2 class="card-title text-primary">Sales Overview</h2>
+                                <div class="h-64 bg-base-200 rounded-lg flex items-center justify-center">
+                                    <span class="text-gray-500">Chart Placeholder</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Orders Table -->
+                        <div class="card bg-base-100 shadow hover:shadow-lg transition-shadow">
+                            <div class="card-body">
+                                <h2 class="card-title text-primary">Recent Orders</h2>
+                                <div class="overflow-x-auto">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Customer</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#12345</td>
+                                                <td>John Doe</td>
+                                                <td>$120</td>
+                                                <td><span class="badge badge-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#12346</td>
+                                                <td>Jane Smith</td>
+                                                <td>$80</td>
+                                                <td><span class="badge badge-warning">Pending</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#12347</td>
+                                                <td>Alice Johnson</td>
+                                                <td>$200</td>
+                                                <td><span class="badge badge-error">Cancelled</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+}

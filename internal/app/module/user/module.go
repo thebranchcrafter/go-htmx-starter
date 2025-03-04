@@ -71,6 +71,12 @@ func (u *UserModule) Routes() []app.Route {
 		},
 		{
 			Method:      http.MethodGet,
+			Path:        "/user-settings",
+			Handler:     user_ui.HandleUserSettings,
+			Middlewares: []router.Middleware{authMiddleware.AuthMiddleware()},
+		},
+		{
+			Method:      http.MethodGet,
 			Path:        "/logout",
 			Handler:     user_ui.HandleLogout,
 			Middlewares: []router.Middleware{authMiddleware.AuthMiddleware()},

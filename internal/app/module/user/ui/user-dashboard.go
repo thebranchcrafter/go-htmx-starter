@@ -17,12 +17,16 @@ func HandleUserDashboard(g *gin.Context) {
 		return
 	}
 
-	user, ok := u.(*user_domain.User)
+	_, ok := u.(*user_domain.User)
 	if !ok {
 		panic("user not found")
 	}
 
+	isHTMX := g.GetHeader("HX-Request") == "true"
 	g.Writer.Header().Set("Content-Type", "text/html")
-	log.Println(user.Name())
-	templ.Handler(components.DashboardLayout(user)).ServeHTTP(g.Writer, g.Request)
+	if isHTMX {
+		templ.Handler(components.Index()).ServeHTTP(g.Writer, g.Request)
+	} else {
+		templ.Handler(components.DashboardIndex()).ServeHTTP(g.Writer, g.Request)
+	}
 }

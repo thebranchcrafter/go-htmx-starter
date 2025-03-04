@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-func HandleUserPasswordSign(g *gin.Context) {
+func HandleUserSettings(g *gin.Context) {
 	u, exists := g.Get("user")
 	if !exists {
 		log.Println("UserInfo not found in context")
@@ -17,12 +17,16 @@ func HandleUserPasswordSign(g *gin.Context) {
 		return
 	}
 
-	user, ok := u.(*user_domain.User)
+	_, ok := u.(*user_domain.User)
 	if !ok {
 		panic("user not found")
 	}
 
+	isHTMX := g.GetHeader("HX-Request") == "true"
 	g.Writer.Header().Set("Content-Type", "text/html")
-	log.Println(user.Name())
-	templ.Handler(components.DashboardIndex()).ServeHTTP(g.Writer, g.Request)
+	if isHTMX {
+		templ.Handler(components.UserSettings()).ServeHTTP(g.Writer, g.Request)
+	} else {
+		templ.Handler(components.UserSettingsLayout()).ServeHTTP(g.Writer, g.Request)
+	}
 }
